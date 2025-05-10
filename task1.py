@@ -1,6 +1,7 @@
 def get_even_numbers(numbers):
     return [num for num in numbers if num % 2 == 0]
 
+
 def find_min_max(numbers):
     maximum = numbers[0]
     minimum = numbers[0]
@@ -11,6 +12,7 @@ def find_min_max(numbers):
             minimum = num
     return minimum, maximum
 
+
 def bubble_sort(numbers):
     """Сортирует список чисел алгоритмом сортировки пузырьком."""
     n = len(numbers)
@@ -20,11 +22,13 @@ def bubble_sort(numbers):
                 numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
     return numbers
 
+
 def merge_sort(numbers):
     """Сортирует список чисел алгоритмом сортировки слиянием."""
     n = len(numbers)
     if n <= 1:
-        return numbers  # Базовый случай: список из 0 или 1 элемента уже отсортирован
+        return numbers
+    # Базовый случай: список из 0 или 1 элемента уже отсортирован
 
     # 1. Разделяем список на две половины
     mid = n // 2
@@ -37,6 +41,7 @@ def merge_sort(numbers):
 
     # 3. Сливаем отсортированные половины
     return merge(left_half, right_half)
+
 
 def merge(left, right):
     """Сливает два отсортированных списка в один отсортированный список."""
@@ -59,15 +64,18 @@ def merge(left, right):
 
     return merged
 
+
 # Ввод
-input_str = input("Введите числа, разделенные запятыми: ")
+
+
+input_str: str = input("Введите числа, разделенные запятыми: ")
 numbers = [int(x.strip()) for x in input_str.split(',')]
 
 # Вызов функций
 even_nums = get_even_numbers(numbers)
-#minimum, maximum = find_min_max(numbers)
+# minimum, maximum = find_min_max(numbers)
 # .copy() чтобы не изменить исходный списо
-#sorted_numbers = bubble_sort(numbers.copy())
+# sorted_numbers = bubble_sort(numbers.copy())
 sorted_numbers = merge_sort(numbers.copy())
 minimum, maximum = sorted_numbers[0], sorted_numbers[-1]
 # Вывод
